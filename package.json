@@ -1,0 +1,21 @@
+{
+  "name": "fhalcom_ora_typeorm_entity_creator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "oracle",
+    "typeorm",
+    "entity",
+    "entity_creator",
+    "cli"
+  ],
+  "author": "fhalcomtech<fhalcom.tech@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.4.2"
+  }
+}
