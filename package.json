@@ -2,9 +2,12 @@
   "name": "fhalcom_ora_typeorm_entity_creator",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run clean && npx tsc && npm run copy-files",
+    "clean": "rm -rf ./build",
+    "copy-files": "cp -R src/public/ ./build/",
+    "test": "jest"
   },
   "keywords": [
     "oracle",
@@ -13,9 +16,21 @@
     "entity_creator",
     "cli"
   ],
-  "author": "fhalcomtech<fhalcom.tech@gmail.com>",
+  "author": {
+    "name": "Fidel Alembert Lascano Valencia (fhalcomtech)",
+    "email": "fhalcom.tech@gmail.com",
+    "url": "http://lascano.valencia.fidel.com"
+  },
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^27.0.1",
+    "jest": "^27.1.0",
+    "ts-jest": "^27.0.5",
     "typescript": "^4.4.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fhalcomtech/fhalcom_ora_typeorm_entity_creator.git"
+  },
+  "homepage": "https://github.com/fhalcomtech/fhalcom_ora_typeorm_entity_creator"
 }
