@@ -35,6 +35,9 @@
   },
   "homepage": "https://github.com/fhalcomtech/fhalcom_ora_typeorm_entity_creator",
   "dependencies": {
+    "@types/minimist": "^1.2.2",
+    "@types/node": "^16.7.10",
+    "minimist": "^1.2.5",
     "typeorm": "^0.2.37"
   }
 }
