@@ -24,7 +24,7 @@ export const fnCreateFolder = (filePath:string):fileCreate => {
     if(!fs.existsSync(path))
     {
         console.log(`Creating directory in ${path}`);
-        fs.mkdirSync(path);
+        fs.mkdirSync(path,{ recursive: true });
                 result.isSaved = true;
                 result.path = path;
                 console.log("directory was create");
@@ -53,4 +53,9 @@ export const fnCreateFile = (filePath:string, fileName:string, fileExt:string ):
         console.log(`file was create in ${path}`);
     }
     return result;
+}
+
+export const fnFileExists = (filePath:string) => {
+    const path = fnFixPath(filePath);
+    return fs.existsSync(path);
 }

@@ -1,10 +1,11 @@
 {
-  "name": "fhalcom-oracle-tormcreator",
+  "name": "fhalcom-toec",
   "version": "1.0.0",
   "description": "",
   "main": "build/index.js",
   "scripts": {
     "build": "npm run clean && npx tsc",
+    "runts": "ts-node ./src/public/index.ts init",
     "clean": "rm -rf ./build",
     "copy-files": "cp -R src/public/ ./build/",
     "test": "jest",
@@ -22,11 +23,25 @@
     "email": "fhalcom.tech@gmail.com",
     "url": "http://lascano.valencia.fidel.com"
   },
+  "dependencies": {
+    "@types/cli-spinner": "^0.2.1",
+    "chalk": "^4.1.2",
+    "cli-spinner": "^0.2.10",
+    "dotenv": "^10.0.0",
+    "inquirer": "^8.1.2",
+    "minimist": "^1.2.5",
+    "typeorm": "^0.2.37"
+  },
   "license": "ISC",
   "devDependencies": {
+    "@types/inquirer": "^7.3.3",
     "@types/jest": "^27.0.1",
+    "@types/minimist": "^1.2.2",
+    "@types/node": "^16.7.10",
     "jest": "^27.1.0",
+    "nodemon": "^2.0.12",
     "ts-jest": "^27.0.5",
+    "ts-node": "^10.2.1",
     "typescript": "^4.4.2"
   },
   "repository": {
@@ -34,10 +49,5 @@
     "url": "https://github.com/fhalcomtech/fhalcom_ora_typeorm_entity_creator.git"
   },
   "homepage": "https://github.com/fhalcomtech/fhalcom_ora_typeorm_entity_creator",
-  "dependencies": {
-    "@types/minimist": "^1.2.2",
-    "@types/node": "^16.7.10",
-    "minimist": "^1.2.5",
-    "typeorm": "^0.2.37"
-  }
+  "bin": "./build/index.js"
 }
