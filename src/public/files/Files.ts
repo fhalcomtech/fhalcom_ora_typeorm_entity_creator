@@ -1,4 +1,6 @@
 import fs from "fs";
+import path from "path";
+const NodePath = path;
 
 export type fileCreate = {
     path:string;
@@ -19,8 +21,8 @@ export const fnCreateFolder = (filePath:string):fileCreate => {
     const basePath = process.cwd();
     path=basePath;
     let result:fileCreate={path:"",isSaved:false};
-    if(filePath && filePath.trim().length>0) path = `${path}/${filePath}`;
-    path = fnFixPath(path);
+    if(filePath && filePath.trim().length>0) path = NodePath.resolve(basePath,filePath);
+    //path = fnFixPath(path);
     if(!fs.existsSync(path))
     {
         console.log(`Creating directory in ${path}`);
@@ -36,7 +38,7 @@ export const fnCreateFolder = (filePath:string):fileCreate => {
     return result;
 }
 
-export const fnCreateFile = (filePath:string, fileName:string, fileExt:string ):fileCreate=>{
+export const fnCreateFile = (filePath:string, fileName:string, fileExt:string, fileText:string = ""):fileCreate=>{
     let path = "";
     let result:fileCreate = {isSaved:false, path:""};
 
@@ -45,9 +47,15 @@ export const fnCreateFile = (filePath:string, fileName:string, fileExt:string ):
     if(folderData.isSaved)
     {
         path = folderData.path;
+
+        /*
         path = `${path}/${fileName}.${fileExt}`;
         path = fnFixPath(path);
-        fs.writeFileSync(`${path}`, ``);
+        */
+
+        path = NodePath.join(path,`${fileName}.${fileExt}`);
+
+        fs.writeFileSync(`${path}`, fileText);
         result.path = path;
         result.isSaved = true;
         console.log(`file was create in ${path}`);
