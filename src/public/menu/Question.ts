@@ -31,9 +31,7 @@ export const FileExistQ = {
     default: false,
     name: questionsKeywords.file_exists,
     message: function(answer:Answers){return fnGetQuestionMessage(questionsKeywords.file_exists);},
-    when: (answer:Answers) => {
-        return fnFileExists(path.resolve(process.cwd(),`fhalcom.config.js`));
-    }
+    when: (answer:Answers) => fnFileExists(path.resolve(process.cwd(),`fhalcom.config.json`))
 }
 
 

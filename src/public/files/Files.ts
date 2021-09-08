@@ -7,12 +7,15 @@ export type fileCreate = {
     isSaved:boolean;
 }
 
+export const fnGetBasePath = (basePath:string):string => {
+    if(fnFileExists(path.resolve(basePath, 'package.json'))) {return basePath;}
+    else return fnGetBasePath(path.join(basePath, '..'))
+}
+
 const fnFixPath = (path:string):string => {
     let isSlash = false;
-    if(path && path.trim().length > 0)
-    {isSlash = process.cwd().slice(0,1).includes("/");}
-    if(isSlash) return path.replace(/\\/g, "/");
-    else return path.replace(/\//g,`\\`);
+    if(path && path.trim().length > 0) return NodePath.resolve(path);
+    else return path;
 }
 
 
@@ -29,7 +32,6 @@ export const fnCreateFolder = (filePath:string):fileCreate => {
         fs.mkdirSync(path,{ recursive: true });
                 result.isSaved = true;
                 result.path = path;
-                console.log("directory was create");
     }
     else{
         result.isSaved = true;
@@ -38,7 +40,8 @@ export const fnCreateFolder = (filePath:string):fileCreate => {
     return result;
 }
 
-export const fnCreateFile = (filePath:string, fileName:string, fileExt:string, fileText:string = ""):fileCreate=>{
+export const fnCreateFile = (filePath:string, fileName:string, fileExt:string, fileText:string = ""):fileCreate =>
+{
     let path = "";
     let result:fileCreate = {isSaved:false, path:""};
 
@@ -63,7 +66,4 @@ export const fnCreateFile = (filePath:string, fileName:string, fileExt:string, f
     return result;
 }
 
-export const fnFileExists = (filePath:string) => {
-    const path = fnFixPath(filePath);
-    return fs.existsSync(path);
-}
+export const fnFileExists = (filePath:string) => fs.existsSync(filePath);

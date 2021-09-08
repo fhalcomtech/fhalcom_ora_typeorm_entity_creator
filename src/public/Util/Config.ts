@@ -1,7 +1,7 @@
-import dotenv from "dotenv";
 import path from "path";
+import {basePathGlobal, env} from "./Vars";
 
 export const fnConfigLanguageEnv  = (language:string):void => {
-    dotenv.config({path: path.resolve(process.cwd(),`language.${language}.env`)});
-    console.log(process.env.LANGUAGE);
+    console.log(path.resolve(basePathGlobal,`envs/language.${language}.env`));
+    env.load([path.resolve(basePathGlobal,`envs/language.${language}.env`)]);
 }
