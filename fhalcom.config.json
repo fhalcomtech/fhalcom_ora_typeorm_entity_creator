@@ -1,10 +1,10 @@
 {
-        "host": "localhost", //Database host, by default it is localhost or you can specify one, like this 192.168.1.100,
-        "port": 1521, //Database port, by default oracle uses port 1521,
-        "user": "usename", //Username to connect to the database,
-        "password": "password", //Access key to the database,
-        "dbname": "DBNAME", //The name of the database in oracle known as in oracle SID = identifies the database instance (database name + instance number) example: dbname01,
-        "schemas": "SchemaName1,SchemaName2,SchemaName3", //Arrangement of strings with the names of the schemes to search for ['s1', 's2']. Required if you don't specify tables,
-        "tables": [{"schema": "Schema3", "table":"tableName1"},{"schema":"Schema4", "table":"tableName5"}], //Array of objects that must contain schema and table such as [{schema: s1, table: t1}]. Required if you don't specify schema,
-        "exclude": [{"schema": "Schema2", "table":"tableName3"},{"schema":"Schema3", "table":"tableName6"}] //Array of objects that must contain schema and table such as [{schema: s1, table: t1}], It tells us that tables will not be taken into account. Mandatory is not mandatory
-    }
+        "host": "localhost", //Host de la base de datos, por defecto es localhost o usted puede especificar uno, de esta forma 192.168.1.100,
+        "port": 1521, //Puerto de la base de datos, por defecto oracle utiliza el puerto 1521,
+        "user": "usename", //Nombre de usuario para conectarse a la base de datos,
+        "password": "password", //Clave de acceso a la base de datos,
+        "dbname": "DBNAME", //El nombre de la base de datos en oracle conocida como SID = identifica la instancia de la base de datos (nombre de la base de datos + número de instancia) ejemplo: dbname01,
+        "schemas": "SchemaName1,SchemaName2,SchemaName3", //Arreglo de cadenas con los nombres de los esquemas a buscar ['s1','s2']. Obligatorio si no especifica tablas,
+        "tables": [{"schema": "Schema3", "table":"tableName1"},{"schema":"Schema4", "table":"tableName5"}], //Arreglo de objetos que debe contener esquema y tabla tal como [{schema: s1, table:t1}]. Obligatorio si no especifica esquema,
+        "exclude": [{"schema": "Schema2", "table":"tableName3"},{"schema":"Schema3", "table":"tableName6"}] //Arreglo de objetos que debe contener esquema y tabla tal como [{schema: s1, table:t1}], Nos dice que tablas no seran tomas en cuenta. Obligatorio no es obligatorio
+}

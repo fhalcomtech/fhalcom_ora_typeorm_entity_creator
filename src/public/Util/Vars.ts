@@ -1,12 +1,10 @@
 import dotenvFlow from "dotenv-flow";
 import path from "path";
-import exp from "constants";
 import {fnGetBasePath} from "../files/Files";
 export const env = dotenvFlow;
 export const basePathGlobal = fnGetBasePath(__dirname);
 
 export const languages = ['English', 'Spanish'];
-
 
 export const commands = {
     i:'init',
@@ -14,7 +12,6 @@ export const commands = {
     h:'help',
     help:'help'
 };
-
 
 export const questionsKeywords = {
     file_exists: 'file_exists'
