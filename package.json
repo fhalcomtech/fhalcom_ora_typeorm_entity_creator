@@ -6,6 +6,7 @@
   "scripts": {
     "build": "npm run clean && npx tsc",
     "runts": "ts-node ./src/public/index.ts init",
+    "runtstmp": "ts-node ./src/public/tmp.ts init",
     "clean": "rm -rf ./build",
     "copy-files": "cp -R src/public/ ./build/",
     "test": "jest",
