@@ -7,7 +7,6 @@ import path from "path";
 
 env.load([path.resolve(basePathGlobal, 'envs/fhalcom.config.env')]);
 
-
 const fnRunCli = ():void => {
     const  args = minimist(process.argv.slice(2));
     const colorText = new ColorText();

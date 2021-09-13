@@ -32,9 +32,13 @@ export const questionsKeywords = {
     file_exists: 'file_exists',
     languages: 'languages',
     instantClientConfig: 'instantclient',
+    instantClientPath: 'instantclientpath',
     connectionConfig: 'connection',
     hostConfig: 'host',
-    portConfig: 'port'
+    portConfig: 'port',
+    dbnameConfig: 'dbname',
+    dbuserConfig: 'dbuser',
+    dbpasswordConfig: 'dbpassword'
 }
 
 

@@ -33,18 +33,9 @@ const fnProcessStartMenu = (answers: any) =>{
 }
 
 export const fnProcessMenu = (command: string, answers:any) => {
-
-    switch (command) {
-        case commands.i:
-        {
-            fnProcessInitMenu(answers)
-            break;
-        }
-        case commands.s:
-        {
-            fnProcessStartMenu(answers);
-            break;
-        }
+    switch (command)
+    {
+        case commands.i: return fnProcessInitMenu(answers);
+        case commands.s: return fnProcessStartMenu(answers);
     }
-
 }
