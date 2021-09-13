@@ -1,6 +1,5 @@
-import {languages, questionsKeywords} from "../Util/Vars";
-import dotenv from "dotenv";
-import inquirer, {Answers} from "inquirer";
+import {fnGetEnvListValues, fnGetEnvValue, languages, questionsKeywords} from "../Util/Vars";
+import {Answers} from "inquirer";
 import {fnConfigLanguageEnv} from "../Util/Config";
 import {fnFileExists} from "../files/Files";
 import path from "path";
@@ -8,7 +7,7 @@ import path from "path";
 export const LanguageMenuQ = {
     type: 'list',
     default: languages[0],
-    name: 'language',
+    name: questionsKeywords.languages,
     message: 'Choose your language',
     choices: languages,
     filter: (val:string) => {
@@ -18,11 +17,28 @@ export const LanguageMenuQ = {
     }
 }
 
-const fnGetQuestionMessage = (questionsName:string) => {
-    switch (questionsName) {
-        case questionsKeywords.file_exists: return process.env.FILE_EXISTS_Q || questionsName;
-        default:return questionsName;
-    }
+export const instantConfigQ = {
+    type: 'list',
+    name: questionsKeywords.instantClientConfig,
+    default: function(answer:Answers){ return  fnGetEnvValue('INSTANT_LOCAL')} ,
+    message: function(answer:Answers){return fnGetEnvValue('INSTANT_QUESTION')},
+    choices: function(answer:Answers){return fnGetEnvListValues(['INSTANT_LOCAL','INSTANT_GLOBAL'])}
+}
+
+export const connectionConfigQ = {
+    type: 'list',
+    name: questionsKeywords.connectionConfig,
+    default: function(answer:Answers){ return  fnGetEnvValue('ORA_CONFIG_FHALCOM')} ,
+    message: function(answer:Answers){return fnGetEnvValue('ORA_CONFIG_QUESTION')},
+    choices: function(answer:Answers){return fnGetEnvListValues(['ORA_CONFIG_FHALCOM','ORA_CONFIG_CONSOLE'])}
+}
+
+export const hostConfigQ = {
+    type: 'input',
+    name: questionsKeywords.hostConfig,
+    default: function (answer:Answers){return fnGetEnvValue('FHALCOM_DB_HOST')},
+    message: function(answer:Answers){return fnGetEnvValue('HOST_CONFIG_QUESTION')},
+    when: (answer:Answers) => {return answer[questionsKeywords.connectionConfig] === fnGetEnvValue('ORA_CONFIG_CONSOLE')}
 }
 
 
@@ -34,19 +50,26 @@ export const FileExistQ = {
     when: (answer:Answers) => fnFileExists(path.resolve(process.cwd(),`fhalcom.config.json`))
 }
 
+const fnGetQuestionMessage = (questionsName:string) => {
+    switch (questionsName) {
+        case questionsKeywords.file_exists: return process.env.FILE_EXISTS_Q || questionsName;
+        default:return questionsName;
+    }
+}
 
 const InitQuestions = [
     LanguageMenuQ,
-    FileExistQ,
+    FileExistQ
 ]
-
 
 const GenerateEntityQuestions = [
     LanguageMenuQ,
-    FileExistQ,
+    instantConfigQ,
+    connectionConfigQ,
+    hostConfigQ
 ]
 
-const questions:object =
+const Questions:object =
 {
     init: InitQuestions,
     i: InitQuestions,
@@ -55,4 +78,4 @@ const questions:object =
 };
 
 // @ts-ignore
-export const fnGetQuestions = (command:string, q:object = questions) => q[`${command}`];
+export const fnGetQuestions = (command:string, questions:object = Questions) => questions[`${command}`];

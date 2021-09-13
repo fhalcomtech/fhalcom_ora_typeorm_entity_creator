@@ -2,7 +2,11 @@
 import minimist from 'minimist';
 import {fnMainMenu} from "./menu/Menu";
 import ColorText from "./Util/ColorText";
-import {commands} from "./Util/Vars";
+import {basePathGlobal, commands, env} from "./Util/Vars";
+import path from "path";
+
+env.load([path.resolve(basePathGlobal, 'envs/fhalcom.config.env')]);
+
 
 const fnRunCli = ():void => {
     const  args = minimist(process.argv.slice(2));

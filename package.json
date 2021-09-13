@@ -5,7 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "build": "npm run clean && npx tsc",
-    "runts": "ts-node ./src/public/index.ts init",
+    "runts": "ts-node ./src/public/index.ts start",
     "runtstmp": "ts-node ./src/public/tmp.ts init",
     "clean": "rm -rf ./build",
     "copy-files": "cp -R src/public/ ./build/",
@@ -31,10 +31,10 @@
     "cli-spinner": "^0.2.10",
     "dotenv": "^10.0.0",
     "dotenv-flow": "^3.2.0",
-    "googleapis": "^85.0.0",
     "inquirer": "^8.1.2",
     "minimist": "^1.2.5",
     "oracledb": "^5.2.0",
+    "superagent": "^6.1.0",
     "typeorm": "^0.2.37"
   },
   "license": "ISC",
@@ -44,6 +44,7 @@
     "@types/jest": "^27.0.1",
     "@types/minimist": "^1.2.2",
     "@types/node": "^16.7.10",
+    "@types/superagent": "^4.1.12",
     "jest": "^27.1.0",
     "nodemon": "^2.0.12",
     "ts-jest": "^27.0.5",
