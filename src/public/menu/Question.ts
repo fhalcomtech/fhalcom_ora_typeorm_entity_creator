@@ -20,16 +20,16 @@ export const LanguageMenuQ = {
 export const instantConfigQ = {
     type: 'list',
     name: questionsKeywords.instantClientConfig,
-    default: function(answer:Answers){ return  fnGetEnvValue('INSTANT_LOCAL')} ,
-    message: function(answer:Answers){return fnGetEnvValue('INSTANT_QUESTION')},
-    choices: function(answer:Answers){return fnGetEnvListValues(['INSTANT_LOCAL','INSTANT_GLOBAL'])}
+    default: (answer:Answers) => fnGetEnvValue('INSTANT_LOCAL'),
+    message: (answer:Answers) => fnGetEnvValue('INSTANT_QUESTION'),
+    choices: (answer:Answers) => fnGetEnvListValues(['INSTANT_LOCAL','INSTANT_GLOBAL'])
 }
 
 export const instantClientPathQ = {
     type: 'input',
     name: questionsKeywords.instantClientPath,
-    default: function (answer:Answers){return fnGetEnvValue('INSTANT_DEFAULT_PATH')},
-    message: function(answer:Answers){return fnGetEnvValue('INSTANT_DEFAULT_PATHQ')},
+    default: (answer:Answers) => fnGetEnvValue('INSTANT_DEFAULT_PATH'),
+    message: (answer:Answers) => fnGetEnvValue('INSTANT_DEFAULT_PATHQ'),
     when: (answer:Answers) => {
         return answer[questionsKeywords.instantClientConfig] === fnGetEnvValue('INSTANT_LOCAL');
     },
@@ -39,8 +39,8 @@ export const instantClientPathQ = {
 export const connectionConfigQ = {
     type: 'list',
     name: questionsKeywords.connectionConfig,
-    default: function(answer:Answers){ return  fnGetEnvValue('ORA_CONFIG_FHALCOM')} ,
-    message: function(answer:Answers){return fnGetEnvValue('ORA_CONFIG_QUESTION')},
+    default: (answer:Answers) => fnGetEnvValue('ORA_CONFIG_FHALCOM'),
+    message: (answer:Answers) => fnGetEnvValue('ORA_CONFIG_QUESTION'),
     choices: function(answer:Answers){return fnGetEnvListValues(['ORA_CONFIG_FHALCOM','ORA_CONFIG_CONSOLE'])}
 }
 
@@ -48,7 +48,7 @@ export const FileExistQ = {
     type: 'confirm',
     default: false,
     name: questionsKeywords.file_exists,
-    message: function(answer:Answers){return fnGetQuestionMessage(questionsKeywords.file_exists);},
+    message: (answer:Answers) => fnGetQuestionMessage(questionsKeywords.file_exists),
     when: (answer:Answers) => fnFileExists(path.resolve(process.cwd(),`fhalcom.config.json`))
 }
 
@@ -57,40 +57,40 @@ export const FileExistQ = {
 export const hostConfigQ = {
     type: 'input',
     name: questionsKeywords.hostConfig,
-    default: function (answer:Answers){return fnGetEnvValue('FHALCOM_DB_HOST')},
-    message: function(answer:Answers){return fnGetEnvValue('HOST_CONFIG_QUESTION')},
+    default: (answer:Answers) => fnGetEnvValue('FHALCOM_DB_HOST'),
+    message: (answer:Answers) => fnGetEnvValue('HOST_CONFIG_QUESTION'),
     when: (answer:Answers) => {return answer[questionsKeywords.connectionConfig] === fnGetEnvValue('ORA_CONFIG_CONSOLE')}
 }
 
 export const portConfigQ = {
     type: 'input',
     name: questionsKeywords.portConfig,
-    default: function(answer:Answers){return fnGetEnvValue('FHALCOM_DB_PORT')},
-    message: function(answer:Answers){return fnGetEnvValue('HOST_CONFIG_QUESTION')},
+    default: (answer:Answers) => fnGetEnvValue('FHALCOM_DB_PORT'),
+    message: (answer:Answers) => fnGetEnvValue('POR_CONFIG_QUESTION'),
     when: (answer:Answers) => {return answer[questionsKeywords.connectionConfig] === fnGetEnvValue('ORA_CONFIG_CONSOLE')}
 }
 
 export const dbNameConfigQ = {
     type: 'input',
     name: questionsKeywords.dbnameConfig,
-    default: function(answer:Answers){return fnGetEnvValue('FHALCOM_DB_DBNAME')},
-    message: function(answer:Answers){return fnGetEnvValue('DBNAME_CONFIG_QUESTION')},
+    default: (answer:Answers) => fnGetEnvValue('FHALCOM_DB_DBNAME'),
+    message: (answer:Answers) => fnGetEnvValue('DBNAME_CONFIG_QUESTION'),
     when: (answer:Answers) => {return answer[questionsKeywords.connectionConfig] === fnGetEnvValue('ORA_CONFIG_CONSOLE')}
 }
 
 export const userConfigQ = {
     type: 'input',
     name: questionsKeywords.dbuserConfig,
-    default: function(answer:Answers){return fnGetEnvValue('FHALCOM_DB_USER')},
-    message: function(answer:Answers){return fnGetEnvValue('USER_CONFIG_QUESTION')},
+    default: (answer:Answers) => fnGetEnvValue('FHALCOM_DB_USER'),
+    message: (answer:Answers) => fnGetEnvValue('USER_CONFIG_QUESTION'),
     when: (answer:Answers) => {return answer[questionsKeywords.connectionConfig] === fnGetEnvValue('ORA_CONFIG_CONSOLE')}
 }
 
 export const passConfigQ = {
     type: 'input',
     name: questionsKeywords.dbpasswordConfig,
-    default: function(answer:Answers){return fnGetEnvValue('FHALCOM_DB_PASSWORD')},
-    message: function(answer:Answers){return fnGetEnvValue('PASSWORD_CONFIG_QUESTION')},
+    default: (answer:Answers) => fnGetEnvValue('FHALCOM_DB_PASSWORD'),
+    message: (answer:Answers) => fnGetEnvValue('PASSWORD_CONFIG_QUESTION'),
     when: (answer:Answers) => {return answer[questionsKeywords.connectionConfig] === fnGetEnvValue('ORA_CONFIG_CONSOLE')}
 }
 
