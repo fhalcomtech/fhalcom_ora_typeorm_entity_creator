@@ -38,8 +38,8 @@ export const questionsKeywords = {
     portConfig: 'port',
     dbnameConfig: 'dbname',
     dbuserConfig: 'dbuser',
-    dbpasswordConfig: 'dbpassword'
-}
+    dbpasswordConfig: 'dbpassword',
+    fhalcomConfig: 'fhalcomConfig'}
 
 
 export const fnGetEnvListValues = (keys:string[]) => keys.map(key => process.env[key]);

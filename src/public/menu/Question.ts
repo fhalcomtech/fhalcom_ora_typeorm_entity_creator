@@ -25,6 +25,14 @@ export const instantConfigQ = {
     choices: (answer:Answers) => fnGetEnvListValues(['INSTANT_LOCAL','INSTANT_GLOBAL'])
 }
 
+export const fhalcomNeedConfigQ = {
+    type: 'confirm',
+    name: questionsKeywords.fhalcomConfig,
+    default: true,
+    message: (answer:Answers) => fnGetEnvValue('NO_FHALCOM_CONFIG'),
+    when: (answer:Answers) => !fnFileExists(path.resolve(process.cwd(),'fhalcom.config.json'))
+}
+
 export const instantClientPathQ = {
     type: 'input',
     name: questionsKeywords.instantClientPath,
@@ -58,7 +66,7 @@ export const hostConfigQ = {
     type: 'input',
     name: questionsKeywords.hostConfig,
     default: (answer:Answers) => fnGetEnvValue('FHALCOM_DB_HOST'),
-    message: (answer:Answers) => fnGetEnvValue('HOST_CONFIG_QUESTION'),
+   message: (answer:Answers) => fnGetEnvValue('HOST_CONFIG_QUESTION'),
     when: (answer:Answers) => {return answer[questionsKeywords.connectionConfig] === fnGetEnvValue('ORA_CONFIG_CONSOLE')}
 }
 
@@ -112,12 +120,15 @@ const GenerateEntityQuestions = [
     LanguageMenuQ,
     instantConfigQ,
     instantClientPathQ,
+    fhalcomNeedConfigQ
+   /* 
     connectionConfigQ,
     hostConfigQ,
     portConfigQ,
     dbNameConfigQ,
     userConfigQ,
     passConfigQ
+   */
 ]
 
 const Questions:object =
