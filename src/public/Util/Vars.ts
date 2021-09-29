@@ -1,7 +1,8 @@
 import dotenvFlow from "dotenv-flow";
 import path from "path";
-import {fnGetBasePath} from "../files/Files";
-import {hostConfigQ} from "../menu/Question";
+import {fnGetBasePath} from "../Files/Files";
+import {hostConfigQ} from "../Menu/Question";
+import {text} from "stream/consumers";
 export const env = dotenvFlow;
 export const basePathGlobal = fnGetBasePath(__dirname);
 
@@ -39,12 +40,14 @@ export const questionsKeywords = {
     dbnameConfig: 'dbname',
     dbuserConfig: 'dbuser',
     dbpasswordConfig: 'dbpassword',
-    fhalcomConfig: 'fhalcomConfig'}
+    fhalcomConfig: 'fhalcomConfig'
+}
 
 
 export const fnGetEnvListValues = (keys:string[]) => keys.map(key => process.env[key]);
 export const fnGetEnvValue = (key:string) => process.env[key];
 export const fnGetFhalcomTemplate = () => {
+
     return `{
         "host": "${process.env.FHALCOM_DB_HOST}", //${process.env.FHALCOM_DB_HOST_COMMENT},
         "port": ${process.env.FHALCOM_DB_PORT}, //${process.env.FHALCOM_DB_PORT_COMMENT},
@@ -55,4 +58,40 @@ export const fnGetFhalcomTemplate = () => {
         "tables": ${process.env.FHALCOM_DB_TABLES}, //${process.env.FHALCOM_DB_TABLES_COMMENT},
         "exclude": ${process.env.FHALCOM_DB_EXCLUDE} //${process.env.FHALCOM_DB_EXCLUDE_COMMENT}
     }`;
+}
+
+
+export const DataTypeMap = {
+
+    //Strings
+    varchar:'string',
+    nvarchar: 'string',
+    varchar2:'string',
+    nvarchar2: 'string',
+    char:'string',
+    nchar:'string',
+    text:'string',
+
+    //Numbers
+    long: 'number',
+    raw: 'number',
+    'long raw':'number',
+    number: 'number',
+    numeric: 'number',
+    float: 'number',
+    dec: 'number',
+    decimal: 'number',
+    integer: 'number',
+    int: 'number',
+    smallint: 'number',
+    real: 'number',
+    'double precision': 'number',
+
+    //Date
+    date: 'Date',
+    timestamp: 'Date',
+    'timestamp with time zone': 'Date',
+    'timestamp with local time zone': 'Date',
+    'interval year to month': 'Date',
+    'interval day to second': 'Date'
 }

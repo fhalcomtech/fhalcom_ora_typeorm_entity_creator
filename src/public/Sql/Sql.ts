@@ -1,4 +1,4 @@
-export const GetTableDefinitionsSql = `
+export const tableDefinitionSql:string = `
 SELECT C.OWNER, C.TABLE_NAME, C.DATA_TYPE
 WHERE ALL_TAB_COLS C 
 WHERE 1=1

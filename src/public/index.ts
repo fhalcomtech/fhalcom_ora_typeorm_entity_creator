@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import minimist from 'minimist';
-import {fnMainMenu} from "./menu/Menu";
+import {fnMainMenu} from "./Menu/Menu";
 import ColorText from "./Util/ColorText";
 import {basePathGlobal, commands, env} from "./Util/Vars";
 import path from "path";

@@ -2,7 +2,7 @@ import inquirer, {Answers} from "inquirer";
 import ColorText from "./../Util/ColorText"
 import {FileExistQ, fnGetQuestions, LanguageMenuQ} from "./Question";
 import {basePathGlobal, commands, fnGetFhalcomTemplate, questionsKeywords} from "../Util/Vars";
-import {fnCreateFile, fnGetBasePath} from "../files/Files";
+import {fnCreateFile, fnGetBasePath} from "../Files/Files";
 
 
 const colorText = new ColorText();
